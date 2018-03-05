@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <LINK REL=StyleSheet HREF="assets/css/style.css" TYPE="text/css" MEDIA=screen>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+  <title>Pirate Trivia!</title>
+</head>
+
+<body>
+  <h1>Pirate Trivia!</h1>
+  <div class ="jumbotron">
+  <h2>Arrrrrr You Ready to Play?</h2>
+  <h2 id ="StartTitle">Press Start to Begin</h2>
+  <p>You will have 20 seconds to answer all of the questions!</p>
+  <div id ="questionDiv"></div>
+  <div id ="answerMsg"></divid>
+
+<div id ="answersDiv">
+        <div class="answer col-lg-12" id="answer0" value="0"></div>
+				<div class="answer col-lg-12" id="answer1" value="1"></div>
+				<div class="answer col-lg-12" id="answer2" value="2"></div>
+				<div class="answer col-lg-12" id="answer3" value="3"></div>
+</div>
+  <div id ="timerDiv"></div>
+  <div id="buttonsDiv">
+      <div class="btn btn-success" type="button" text="Start" id="start">Start!</div>
+      <div class="btn btn-primary" type="button" text="Reset" id="reset">Play Again?</div>
+
+      <div id ="scoreDiv"></div>
+    </div>
+  </div>
+  
+</body>
+</html>
