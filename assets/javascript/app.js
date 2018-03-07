@@ -1,3 +1,5 @@
+//timer is running super slowly. I would like it to go to zero after the third question is answered, but it doesn't. This is a lot of pieced together code from many different google searches and w3schools examples. I'm sure there is a more efficient method,but it's sort of working... so... yay!?!
+
 $(document).ready(function () {
 
     var timerNumber = 20;
@@ -8,7 +10,7 @@ $(document).ready(function () {
 
     var answers = [];
     var currentQuestion =0;
-    //questions,answers, put in array
+    
     var trivia = [
         q1 = {
             question: "Pirates always fly the Smile Face Flag when they are at sea.",
@@ -25,7 +27,8 @@ $(document).ready(function () {
             multChoice: ["True", "False"],
             correct: 0,
         },
-    ];
+	];
+	
     //hide 
     var hide = function(elementId) {
         $(elementId).css("visibility", "hidden");
@@ -36,7 +39,7 @@ $(document).ready(function () {
     };
    
     var questionWrite = function () {
-        if(currentQuestion <=3) {
+        if(currentQuestion <=2) {
             $("#questionDiv").html("<h2>"+ trivia[currentQuestion].question + "</h2>");
             answers=trivia[currentQuestion].multChoice;
             show(".answer");
@@ -48,7 +51,8 @@ $(document).ready(function () {
                 gameOver();
 
         }
-    };
+	};
+	//I don't really understand how this function works, but it allows the next answer to be accepted (clears out the previous one)
     var answerClear = function () {
 		for (var i = 0; i < 3; i++) {
 			$('#answer' + i).html('');
@@ -56,15 +60,15 @@ $(document).ready(function () {
 		hide('.answer');
 	};
 
-	// Timer
+	//starts the game and counter
 	var start = function() {
 		
-		counter = setInterval(countDown, 2000);
+		counter = setInterval(countDown, 2000); 
 		$('#startTitle').empty();
 		// hide start button
 		hide('#start');
 
-		//write question & answers
+		
 		questionWrite();	
 	};
 
@@ -84,61 +88,45 @@ $(document).ready(function () {
 			gameOver();
 		}
 	};
+	//game stops at 0
 	var stop = function () {
 		clearInterval(counter);
 	};
-
-	
-	var reset = function () {
-		stop();
-		timerNumber = 20;
-		answers = [];
-		currentQuestion = 0;
-		clearScreen();
-		$('#timerDiv').empty();
-		write('#startTitle', 'Press Start Button to Begin!');
-		show('#start');
-		hide('#reset');
-	};
-	
 	var gameOver = function() {
         stop();
-        
-		clearScreen();
+      	clearScreen();
 
-		//game over results -not working
-		write('#startTitle', '<h3>Game Over!</h3>');
-		$('#scoreDiv').append('<h3>Here are your results</h3>');
-		$('#scoreDiv').append('<h3>Number of correct answers: ' + numCorrect + '</h3>');
-		show('#reset');
+	// shows results 	
+		$("#scoreDiv").append("<h3>Here be your results:</h3>");
+		$("#scoreDiv").append("<h3>You got: " + numCorrect + " correct!</h3>");
+		
 	};
 
 	//next question function
 	var nextQuestion = function () {
-		$('#image').css('display', 'none');
-		$('#questionDiv').css('display', 'initial');
-		$('#answersDiv').css('display', 'initial');
-		$('#answerMsg').css('display', 'none');
+		
+		$("#questionDiv").css("display", "initial");
+		$("#answersDiv").css("display", "initial");
+		$("#answerMsg").css("display", "none");
 		clearInterval();
 		timerNumber = 20;
 	}
 
-	//check answer
-	$('.answer').click(function () {
+	
+	$(".answer").click(function () {
 		var clicked = $(this);
-		var value = clicked.attr('value');
+		var value = clicked.attr("value");
 		var correctAnswer = trivia[currentQuestion].correct;
 
 		if (value == correctAnswer) {
-			$('#questionDiv').empty();
+			$("#questionDiv").empty();
 			answerClear();
-			$('#answersDiv').css('display', 'none');
-			$('#questionDiv').css('display', 'none');
-			$('#answerMsg').css('display', 'initial');
+			$("#answersDiv").css("display", "none");
+			$("#questionDiv").css("display", "none");
+			$("#answerMsg").css("display", "initial");
 			
-            
-            //not sure about this-
-            setInterval(nextQuestion, 1 * 200);
+                   
+            setInterval(nextQuestion, 3 * 200);
 			numAnswered ++;
 			numCorrect ++;
 			currentQuestion ++;
@@ -155,9 +143,8 @@ $(document).ready(function () {
 		}
 	});
 
-	 // click handlers	
 	$('#start').on("click", start);
-	$('#reset').on('click', reset);
+	
 
 })
 
