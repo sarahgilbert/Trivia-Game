@@ -1,1 +1,2 @@
 # Trivia-Game
+In this game, the player has 20 seconds to answer each question. There are three questions about pirates. After the user answers all three questions. The number of correct responses is shown.

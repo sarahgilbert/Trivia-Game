@@ -109,7 +109,7 @@ $(document).ready(function () {
 		$("#answersDiv").css("display", "initial");
 		$("#answerMsg").css("display", "none");
 		clearInterval();
-		timerNumber = 20;
+		//timerNumber = 20;
 	}
 
 	
@@ -126,8 +126,9 @@ $(document).ready(function () {
 			$("#answerMsg").css("display", "initial");
 			
                    
-            setInterval(nextQuestion, 3 * 200);
+            setInterval(nextQuestion, 2 * 200);
 			numAnswered ++;
+			numIncorrect ++;
 			numCorrect ++;
 			currentQuestion ++;
 			questionWrite();
