@@ -1,4 +1,4 @@
-//timer is running super slowly. I would like it to go to zero after the third question is answered, but it doesn't. This is a lot of pieced together code from many different google searches and w3schools examples. I'm sure there is a more efficient method,but it's sort of working... so... yay!?!
+//timer is running super slowly. This is a lot of pieced together code from many different google searches and w3schools examples. I'm sure there is a more efficient method,but it's sort of working... so... yay!?!
 
 $(document).ready(function () {
 
@@ -52,9 +52,9 @@ $(document).ready(function () {
 
         }
 	};
-	//I don't really understand how this function works, but it allows the next answer to be accepted (clears out the previous one)
+	
     var answerClear = function () {
-		for (var i = 0; i < 3; i++) {
+		for (var i = 0; i < 2; i++) {
 			$('#answer' + i).html('');
 		}
 		hide('.answer');
@@ -109,7 +109,7 @@ $(document).ready(function () {
 		$("#answersDiv").css("display", "initial");
 		$("#answerMsg").css("display", "none");
 		clearInterval();
-		//timerNumber = 20;
+		
 	}
 
 	
